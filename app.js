@@ -2,6 +2,8 @@ import PromptSync from "prompt-sync"
 const prompt = PromptSync()
 
 import criarSaudacao from "./criarSaudacao.js"
+import criarPedido from "./criarPedido.js"
+import calcularTotal from "./calcularTotal.js"
 
 function exibirMenu() {
     console.log("\n=== Lanchonete do Bairro ===")
@@ -21,6 +23,15 @@ do {
         case "1":
             let nomeCliente = prompt("Nome do cliente: ")
             console.log(criarSaudacao(nomeCliente))
+            break
+        case "2":
+            let produto = prompt("Produto: ")
+            let preco = Number(prompt("Preço unitário (R$): "))
+            let quantidade = Number(prompt("Quantidade: "))
+            let pedido = criarPedido(produto, preco, quantidade)
+            let total = calcularTotal(pedido)
+            console.log(`Pedido: ${quantidade}x ${pedido.produto}`)
+            console.log(`Total: R$ ${total.toFixed(2)}`)
             break
         case "0":
             console.log("Caixa fechado. Até amanhã!")
