@@ -37,9 +37,14 @@ do {
         case "3":
             let valorCompra = Number(prompt("Valor da compra (R$): "))
             let percentualDesconto = Number(prompt("Percentual de desconto (%): "))
-            let valorComDesconto = aplicarDesconto(valorCompra, percentualDesconto)
-            console.log(`Valor com desconto: R$ ${valorComDesconto.toFixed(2)}`)
-            break
+            if (percentualDesconto < 0 || percentualDesconto > 100) {
+                console.log("O desconto precisa estar entre 0 e 100.")
+                break
+            } else {
+                let valorComDesconto = aplicarDesconto(valorCompra, percentualDesconto)
+                console.log(`Valor com desconto: R$ ${valorComDesconto.toFixed(2)}`)
+                break
+            }
         case "0":
             console.log("Caixa fechado. Até amanhã!")
             break
