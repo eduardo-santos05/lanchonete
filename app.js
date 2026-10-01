@@ -5,6 +5,8 @@ import criarSaudacao from "./criarSaudacao.js"
 import criarPedido from "./criarPedido.js"
 import calcularTotal from "./calcularTotal.js"
 import aplicarDesconto from "./aplicarDesconto.js"
+import salvarVenda from "./salvarVenda.js"
+import lerVendas from "./lerVendas.js"
 
 function exibirMenu() {
     console.log("\n=== Lanchonete do Bairro ===")
@@ -33,6 +35,7 @@ do {
             let total = calcularTotal(pedido)
             console.log(`Pedido: ${quantidade}x ${pedido.produto}`)
             console.log(`Total: R$ ${total.toFixed(2)}`)
+            salvarVenda(`${quantidade}x ${pedido.produto} - R$ ${total.toFixed(2)}`)
             break
         case "3":
             let valorCompra = Number(prompt("Valor da compra (R$): "))
@@ -45,6 +48,10 @@ do {
                 console.log(`Valor com desconto: R$ ${valorComDesconto.toFixed(2)}`)
                 break
             }
+        case "4":
+            console.log("=== Vendas do dia ===")
+            console.log(lerVendas())
+            break
         case "0":
             console.log("Caixa fechado. Até amanhã!")
             break
