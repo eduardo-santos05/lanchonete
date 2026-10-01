@@ -4,6 +4,7 @@ const prompt = PromptSync()
 import criarSaudacao from "./criarSaudacao.js"
 import criarPedido from "./criarPedido.js"
 import calcularTotal from "./calcularTotal.js"
+import aplicarDesconto from "./aplicarDesconto.js"
 
 function exibirMenu() {
     console.log("\n=== Lanchonete do Bairro ===")
@@ -32,6 +33,12 @@ do {
             let total = calcularTotal(pedido)
             console.log(`Pedido: ${quantidade}x ${pedido.produto}`)
             console.log(`Total: R$ ${total.toFixed(2)}`)
+            break
+        case "3":
+            let valorCompra = Number(prompt("Valor da compra (R$): "))
+            let percentualDesconto = Number(prompt("Percentual de desconto (%): "))
+            let valorComDesconto = aplicarDesconto(valorCompra, percentualDesconto)
+            console.log(`Valor com desconto: R$ ${valorComDesconto.toFixed(2)}`)
             break
         case "0":
             console.log("Caixa fechado. Até amanhã!")
